@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import Round1 from "./Round/Round1";
+import Round2 from "./Round/Round2";
+import { Round5 } from "./Round/Round5";
+import Round3 from "./Round/Round3";
+import Round4 from "./Round/Round4";
 
-const channel = new BroadcastChannel("feud");
 
-const redPoint = new BroadcastChannel("red");
-const bluePoint = new BroadcastChannel("blue");
 
 
 
@@ -14,17 +15,23 @@ export default function Display() {
 
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
+  const [round, setRound] = useState(0);
+
 
   useEffect(() => {
     const redChannel = new BroadcastChannel("red");
     const blueChannel = new BroadcastChannel("blue");
+    const Roundchannel = new BroadcastChannel("Round");
 
     redChannel.onmessage = (event) => setRedScore(event.data);
     blueChannel.onmessage = (event) => setBlueScore(event.data);
+    Roundchannel.onmessage = (event) => setRound(event.data);
+
 
     return () => {
       redChannel.close();
       blueChannel.close();
+      Roundchannel.close();
     };
   }, []);
 
@@ -32,13 +39,19 @@ export default function Display() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-blue-950 to-cyan-900 p-6 text-gray-900  ">
-        <div className="flex gap-x-80 justify-center    ">
-          <span className="text-red-500 text-3xl font-bold">{redScore}</span>
-          <span className="text-3xl"> خمنها صح</span>
-          <span className="text-blue-500 text-3xl font-bold ">{blueScore}</span>
+        <div className="flex gap-x-80 justify-center  bg-gradient-to-r from-red-500 to-blue-500 h-20 items-center   ">
+          <span className="text-white text-4xl font-bold w-30">{redScore}</span>
+          <span className="text-5xl text-white font-extrabold text-shadow-black text-shadow-lg">
+            {" "}
+            خمنها صح
+          </span>
+
+          <span className="text-white text-4xl font-bold w-30 ">
+            {blueScore}
+          </span>
         </div>
-        <div className="">
-          <Round1 />
+        <div className={`${round != 0 ? "block" : "hidden" }  `}>
+          <Round1 RoundNumber={round} />
         </div>
       </div>
     </>
