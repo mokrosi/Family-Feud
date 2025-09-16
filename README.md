@@ -1,12 +1,72 @@
-# React + Vite
+# Family Feud Game Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based Family Feud game manager and display system built with React and Vite. This project allows you to control game rounds, points, and answer visibility in real time using BroadcastChannel for communication between dashboard and display screens.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Manager Dashboard**: Set team points, control rounds, and reveal/hide answers.
+- **Display Screen**: Shows current round, question, and answers as revealed by the manager.
+- **Real-time Sync**: Uses BroadcastChannel API for instant updates between dashboard and display.
+- **Multiple Rounds**: Easily switch between rounds and reset answer visibility.
+- **Custom Questions**: Questions and answers are loaded from a JSON file.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+- Node.js (v16 or higher recommended)
+- npm
+
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/mokrosi/Family-Feud.git
+   cd Family-Feud
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### Running the App
+Start the development server:
+```sh
+npm run dev
+```
+
+Open two browser windows/tabs:
+- Go to `/dashboard` for the manager controls
+- Go to `/display` for the display screen
+
+### Project Structure
+```
+Family-Feud/
+├── public/
+├── src/
+│   ├── Dashboard.jsx
+│   ├── Display.jsx
+│   ├── main.jsx
+│   ├── Round/
+│   │   └── Round1.jsx ...
+│   └── assets/
+├── questions.json
+├── index.html
+├── package.json
+└── README.md
+```
+
+## Customization
+- Edit `questions.json` to add or modify game questions and answers.
+- Style components using Tailwind CSS or your preferred CSS framework.
+
+## Technologies Used
+- React
+- Vite
+- BroadcastChannel API
+- Tailwind CSS (optional)
+
+## License
+MIT
+
+---
+
+> Made with ❤️ for fun and family gatherings!
