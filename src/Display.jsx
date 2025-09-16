@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
 import Round1 from "./Round/Round1";
-import Round2 from "./Round/Round2";
-import { Round5 } from "./Round/Round5";
-import Round3 from "./Round/Round3";
-import Round4 from "./Round/Round4";
-
-
-
-
 
 export default function Display() {
-
-
-
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
   const [round, setRound] = useState(0);
@@ -27,14 +16,12 @@ export default function Display() {
     blueChannel.onmessage = (event) => setBlueScore(event.data);
     Roundchannel.onmessage = (event) => setRound(event.data);
 
-
     return () => {
       redChannel.close();
       blueChannel.close();
       Roundchannel.close();
     };
   }, []);
-
 
   return (
     <>
@@ -50,7 +37,7 @@ export default function Display() {
             {blueScore}
           </span>
         </div>
-        <div className={`${round != 0 ? "block" : "hidden" }  `}>
+        <div className={`${round != 0 ? "block" : "hidden"}  `}>
           <Round1 RoundNumber={round} />
         </div>
       </div>
