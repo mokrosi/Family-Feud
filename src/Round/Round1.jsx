@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import roundsData from "../../questions.json"; 
+import roundsData from "../../questions.json";
 
 export default function Round1({ RoundNumber }) {
   const [RoundChick, setRoundChick] = useState(1);
-//   true = hidden   , false block
-  const [hidden, setHidedden] = useState([true,true,true,true,true,true]);
+  //   true = hidden   , false block
+  const [hidden, setHidedden] = useState([true, true, true, true, true, true]);
 
   useEffect(() => {
     if (RoundNumber === 0) {
@@ -12,19 +12,19 @@ export default function Round1({ RoundNumber }) {
     } else {
       setRoundChick(RoundNumber);
     }
-  }, [RoundNumber]); 
+  }, [RoundNumber]);
 
-    useEffect(() => {
-      const hiddenchannel = new BroadcastChannel("hidden");
+  useEffect(() => {
+    const hiddenchannel = new BroadcastChannel("hidden");
 
-      hiddenchannel.onmessage = (event) => {
-        setHidedden(event.data);     
-      }
+    hiddenchannel.onmessage = (event) => {
+      setHidedden(event.data);
+    };
 
-      return () => {
-        hiddenchannel.close();      
-      };
-    }, []);
+    return () => {
+      hiddenchannel.close();
+    };
+  }, []);
 
 
 
