@@ -1,6 +1,9 @@
-# Family Feud Game Dashboard
+# Family Feud Game Dashboard, Two-screen control
 
-A web-based Family Feud game manager and display system built with React and Vite. This project allows you to control game rounds, points, and answer visibility in real time using BroadcastChannel for communication between dashboard and display screens.
+The game is in AR language, but it  is easy to convert to EN 
+
+
+A web-based Family Feud game manager and display system built with React and Vite. This project allows you to control game rounds, points, and answer visibility in real time using BroadcastChannel for communication between the dashboard and display screens.
 
 ## Features
 
